@@ -1,8 +1,8 @@
-# 🧠 Brainspill
+# 🧠 BrainSpill
 
 **An anonymous secrets sharing platform where thoughts flow freely**
 
-Brainspill is a modern web application that allows users to anonymously share their secrets and discover random secrets from other users. Built with a focus on privacy and user experience, it features secure authentication, elegant design, and seamless user interactions.
+BrainSpill is a modern web application that allows users to anonymously share their secrets and discover random secrets from other users. Built with a focus on privacy and user experience, it features secure authentication, elegant design, and seamless user interactions.
 
 ## ✨ Features
 
@@ -55,7 +55,7 @@ Brainspill is a modern web application that allows users to anonymously share th
 1. **Clone the repository**
    ```bash
    git clone <your-repo-url>
-   cd brainspill
+   cd BrainSpill
    ```
 
 2. **Install dependencies**
@@ -119,7 +119,7 @@ Brainspill is a modern web application that allows users to anonymously share th
 ## 🏗️ Project Structure
 
 ```
-brainspill/
+BrainSpill/
 ├── 📄 index.js              # Main server file
 ├── 📦 package.json          # Dependencies and scripts
 ├── 🔒 .env                  # Environment variables (not in repo)
@@ -172,4 +172,4 @@ brainspill/
 
 **Made with ❤️ and a lot of ☕**
 
-*Brainspill - Where secrets find their voice*
+*BrainSpill - Where secrets find their voice*
