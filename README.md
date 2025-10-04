@@ -80,7 +80,7 @@ BrainSpill is a modern web application that allows users to anonymously share th
    CREATE TABLE secrets (
      id SERIAL PRIMARY KEY,
      user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-     secret_text TEXT NOT NULL,
+     secret_text TEXT NOT NULL
    );
    ```
 
