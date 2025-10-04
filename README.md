@@ -13,10 +13,11 @@ BrainSpill is a modern web application that allows users to anonymously share th
 - **Profile Completion**: Guided setup for new users to choose their preferred username
 
 ### 🎭 Anonymous Secret Sharing
-- **Submit Secrets**: Share your thoughts anonymously with the community
+- **Submit Secrets**: Submit unlimited anonymous secrets to the community
 - **Random Discovery**: View random secrets from other users
 - **Privacy First**: No personal information is tied to shared secrets
 - **Real-time Updates**: Fresh content with every visit
+- **Persistent Storage**: All secrets are safely stored and remain accessible
 
 ### 🎨 Modern UI/UX
 - **Responsive Design**: Works seamlessly across desktop and mobile devices
@@ -67,12 +68,19 @@ BrainSpill is a modern web application that allows users to anonymously share th
    ```sql
    CREATE DATABASE brainspill;
    
+   -- Users table
    CREATE TABLE users (
      id SERIAL PRIMARY KEY,
      email VARCHAR(100) NOT NULL UNIQUE,
      password VARCHAR(100) NOT NULL,
-     username VARCHAR(50) UNIQUE,
-     secret TEXT
+     username VARCHAR(50) UNIQUE
+   );
+   
+   -- Secrets table (supports multiple secrets per user)
+   CREATE TABLE secrets (
+     id SERIAL PRIMARY KEY,
+     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+     secret_text TEXT NOT NULL,
    );
    ```
 
@@ -107,8 +115,8 @@ BrainSpill is a modern web application that allows users to anonymously share th
 ### For New Users
 1. **Register**: Create an account with email and password, or use Google OAuth
 2. **Choose Username**: Select a unique username for your profile
-3. **Share a Secret**: Submit your first anonymous secret
-4. **Discover**: Browse random secrets from the community
+3. **Share Secrets**: Submit your anonymous secrets to the community
+4. **Discover**: Browse random secrets from other users
 
 ### For Returning Users
 1. **Login**: Access your account with email/password or Google
@@ -135,6 +143,17 @@ BrainSpill/
 │   └── 📝 submit.ejs        # Secret submission form
 └── 📋 README.md             # Project documentation
 ```
+
+## 🗄️ Database Architecture
+
+### Multiple Secrets Design
+BrainSpill uses a **normalized database design** that allows users to submit multiple secrets:
+
+- **Users Table**: Stores authentication and profile information
+- **Secrets Table**: Stores individual secrets with foreign key relationships
+- **One-to-Many Relationship**: Each user can have multiple secrets
+- **Random Selection**: Home page displays random secrets from the entire pool
+- **Timestamp Tracking**: Each secret includes creation timestamp
 
 ## 🔧 API Endpoints
 
