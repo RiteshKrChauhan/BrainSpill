@@ -43,11 +43,17 @@ app.get("/", async (req, res) => {
     }
     
     try {
-      // Always get a random secret from all users
-      const result = await db.query(`SELECT secret, username FROM users WHERE secret IS NOT NULL ORDER BY RANDOM() LIMIT 1`);
+      // Get random secret from secrets table with user info
+      const result = await db.query(`
+        SELECT s.secret_text, u.username 
+        FROM secrets s 
+        JOIN users u ON s.user_id = u.id 
+        ORDER BY RANDOM() 
+        LIMIT 1
+      `);
       if (result.rows.length > 0) {
         res.render("home.ejs", { 
-          secret: result.rows[0].secret,
+          secret: result.rows[0].secret_text,
           user: result.rows[0].username,
           authenticated: true 
         });
@@ -224,7 +230,11 @@ app.post("/submit", async (req, res) => {
   const submittedSecret = req.body.secret;
 
   try {
-    await db.query("UPDATE users SET secret = $1 WHERE id = $2", [submittedSecret, req.user.id]);
+    // Insert new secret instead of updating existing one
+    await db.query(
+      "INSERT INTO secrets (user_id, secret_text) VALUES ($1, $2)", 
+      [req.user.id, submittedSecret]
+    );
     res.redirect("/");
   } catch (err) {
     console.log(err);
