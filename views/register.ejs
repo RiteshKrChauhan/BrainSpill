@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Brainspill - Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+  <h1 title="Join Brainspill">Join Brainspill</h1>
+  <p style="color: rgba(255, 255, 255, 0.8); text-align: center; margin-bottom: 30px; font-size: 18px;">Create your anonymous identity</p>
+  
+  <div class="auth-container">
+    <h2>Register</h2>
+    
+    <% if (locals.error) { %>
+      <div class="error-message">
+        <%= error %>
+      </div>
+    <% } %>
+    
+    <form class="auth-form" action="/register" method="POST">
+      <div class="form-group">
+        <label for="displayName">Anonymous Username</label>
+        <input type="text" name="displayName" placeholder="Choose your secret identity" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="username">Email Address</label>
+        <input type="email" name="username" placeholder="Enter your email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Create a secure password" required>
+      </div>
+      
+      <button type="submit" class="btn">Join Brainspill</button>
+    </form>
+    
+    <a href="/auth/google" class="google-btn">Continue with Google</a>
+    
+    <div class="auth-links">
+      <p>Already have an account?</p>
+      <a href="/login">Sign in to your account →</a>
+    </div>
+  </div>
+</body>
+
+</html>

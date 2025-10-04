@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Brainspill - Submit Secret</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+  <a href="/logout" class="btn logout-btn">Logout</a>
+  
+  <h1>Share Your Secret</h1>
+  <p style="color: white; text-align: center; margin-bottom: 30px;">What's weighing on your mind?</p>
+  
+  <div class="submit-container">
+    <form class="submit-form" action="/submit" method="POST">
+      <div class="form-group">
+        <label for="secret" style="color: white; font-size: 18px; margin-bottom: 10px;">Your Secret:</label>
+        <textarea name="secret" placeholder="Share your secret anonymously..." required></textarea>
+      </div>
+      
+      <button type="submit" class="btn">Submit Secret</button>
+    </form>
+    
+    <div class="auth-links">
+      <a href="/">← Back to Secrets</a>
+    </div>
+  </div>
+</body>
+
+</html>

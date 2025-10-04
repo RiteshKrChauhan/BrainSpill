@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Brainspill - Complete Your Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+  <h1 title="Almost There!">Almost There!</h1>
+  <p style="color: rgba(255, 255, 255, 0.8); text-align: center; margin-bottom: 30px; font-size: 18px;">Choose your anonymous identity</p>
+  
+  <div class="auth-container">
+    <h2>Complete Your Profile</h2>
+    <p style="color: rgba(255, 255, 255, 0.7); text-align: center; margin-bottom: 30px; font-size: 14px;">
+      To maintain anonymity, please choose a username that will be displayed with your secrets.
+    </p>
+    
+    <% if (locals.error) { %>
+      <div class="error-message">
+        <%= error %>
+      </div>
+    <% } %>
+    
+    <form class="auth-form" action="/complete-profile" method="POST">
+      <div class="form-group">
+        <label for="username">Anonymous Username</label>
+        <input type="text" name="username" placeholder="Choose your secret identity" required maxlength="50" 
+               value="<%= locals.username || '' %>">
+        <small style="color: rgba(255, 255, 255, 0.6); font-size: 12px; margin-top: 5px;">
+          This will be shown when you share secrets. Must be unique!
+        </small>
+      </div>
+      
+      <button type="submit" class="btn">Complete Profile & Enter Brainspill</button>
+    </form>
+    
+    <div class="auth-links">
+      <p style="font-size: 12px; color: rgba(255, 255, 255, 0.5);">
+        Your email: <%= user.email %>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
